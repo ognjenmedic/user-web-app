@@ -10,6 +10,7 @@ import { ProductsComponent } from './pages/products/products.component';
 import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { ProductCardComponent } from './product-card/product-card.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     ProductsComponent,
     ShoppingCartComponent,
     CheckoutComponent,
-    NavbarComponent
+    NavbarComponent,
+    ProductCardComponent
   ],
   imports: [
     BrowserModule,

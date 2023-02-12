@@ -1,0 +1,41 @@
+<div class="flex justify-center">
+  <div class="block rounded-lg shadow-lg bg-white max-w-sm text-center">
+    <div class="border-b border-gray-300">
+      <img
+        src="https://i.ibb.co/BrHxKmN/munro-studio-b4-Xk6bzg-QWU-unsplash.png"
+        alt="product.productName"
+      />
+    </div>
+    <div class="p-6">
+      <h5 class="text-gray-900 text-xl font-medium mb-2 text-left">
+        {{ product.productName }}
+      </h5>
+      <p class="text-gray-700 text-base mb-4 text-left">
+        {{ product.unitPrice | currency : "USD" }}
+      </p>
+    </div>
+    <div class="py-1 px-6 border-t border-gray-300">
+      <!-- Code block for button with black outline starts -->
+      <button
+        class="mx-2 my-2 bg-gray-900 hover:bg-gray-700 transition duration-150 ease-in-out rounded border border-gray-800 text-slate-50 px-3 py-2 text-xs"
+      >
+        Buy Now
+      </button>
+      <!-- Code block for button with black outline ends -->
+      <!-- Code block for button with black outline starts -->
+      <button
+        class="mx-2 my-2 bg-gray-900 hover:bg-gray-700 transition duration-150 ease-in-out rounded border border-gray-800 text-slate-50 px-3 py-2 text-xs"
+      >
+        Add to Cart
+      </button>
+      <!-- Code block for button with black outline ends -->
+      <!-- Code block for button with black outline starts -->
+      <button
+        class="mx-2 my-2 bg-gray-900 hover:bg-gray-700 transition duration-150 ease-in-out rounded border border-gray-800 text-slate-50 px-3 py-2 text-xs"
+      >
+        Wishlist
+      </button>
+      <!-- Code block for button with black outline ends -->
+    </div>
+  </div>
+</div>
