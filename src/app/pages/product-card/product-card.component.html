@@ -1,15 +1,16 @@
 <div class="flex justify-center">
   <div class="block rounded-lg shadow-lg bg-white max-w-sm text-center">
     <div class="border-b border-gray-300">
-      <img
-        src="https://i.ibb.co/BrHxKmN/munro-studio-b4-Xk6bzg-QWU-unsplash.png"
-        alt="product.productName"
-      />
+      <a routerLink="/products/{{ product.sku }}">
+        <img src="{{ product.imageUrl }} " alt="product.productName" />
+      </a>
     </div>
     <div class="p-6">
-      <h5 class="text-gray-900 text-xl font-medium mb-2 text-left">
-        {{ product.productName }}
-      </h5>
+      <a routerLink="/products/{{ product.sku }}">
+        <h5 class="text-gray-900 text-xl font-medium mb-2 text-left">
+          {{ product.productName }}
+        </h5>
+      </a>
       <p class="text-gray-700 text-base mb-4 text-left">
         {{ product.unitPrice | currency : "USD" }}
       </p>

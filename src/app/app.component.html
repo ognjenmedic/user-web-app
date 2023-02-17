@@ -1,13 +1,8 @@
+<!-- Navigation bar -->
 <app-navbar></app-navbar>
-<!-- <div class="container mt-3 mx-1"> -->
+<!-- <app-categories></app-categories> -->
+<!-- Main content -->
+<router-outlet></router-outlet>
 <!-- <app-products></app-products> -->
-<!-- </div> -->
-<div
-  class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 lg:gap-6 px-3 pt-0 pb-3 mx-10 mt-2"
->
-  <app-product-card
-    *ngFor="let product of products"
-    [product]="product"
-  ></app-product-card>
-  <!-- <h1>{{ product1.productName }}</h1> -->
-</div>
+<!-- <app-product-details></app-product-details> -->
+<app-footer></app-footer>

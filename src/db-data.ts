@@ -24,7 +24,8 @@ export const PRODUCTS: any = [
   {
     sku: 3,
     productName: 'Gamma Flat Shoes',
-    imageUrl: 'https://unsplash.com/photos/CJ6SJO_yR5w',
+    imageUrl:
+      'https://caltech-userwebapp.s3.us-west-1.amazonaws.com/images/alexandra-gorn-CJ6SJO_yR5w-unsplash.jpg',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Amet justo donec enim diam vulputate. Condimentum id venenatis a condimentum vitae sapien. Tellus pellentesque eu tincidunt tortor aliquam.',
     unitPrice: 250,
@@ -37,7 +38,7 @@ export const PRODUCTS: any = [
     imageUrl: 'https://unsplash.com/photos/Zx76sbAndc0',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Amet justo donec enim diam vulputate. Condimentum id venenatis a condimentum vitae sapien. Tellus pellentesque eu tincidunt tortor aliquam.',
-    unitPrice: 250,
+    unitPrice: 400,
     category: "Women's Shoes",
     unitsInStock: 5,
   },
@@ -53,13 +54,13 @@ export const PRODUCTS: any = [
   },
   {
     sku: 6,
-    productName: 'Zeta Sneakers',
-    imageUrl: 'https://unsplash.com/photos/ezdrvzA1hZw',
+    productName: 'Zeta High Heels Shoes',
+    imageUrl: 'https://unsplash.com/photos/RPVspeDIxXI',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Amet justo donec enim diam vulputate. Condimentum id venenatis a condimentum vitae sapien. Tellus pellentesque eu tincidunt tortor aliquam.',
-    unitPrice: 195,
+    unitPrice: 500,
     category: "Women's Shoes",
-    unitsInStock: 30,
+    unitsInStock: 13,
   },
   {
     sku: 7,
@@ -71,15 +72,16 @@ export const PRODUCTS: any = [
     category: "Women's Shoes",
     unitsInStock: 17,
   },
+
   {
     sku: 8,
-    productName: 'Theta High Heels Shoes',
-    imageUrl: 'https://unsplash.com/photos/RPVspeDIxXI',
+    productName: 'Theta Sneakers',
+    imageUrl: 'https://unsplash.com/photos/ezdrvzA1hZw',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Amet justo donec enim diam vulputate. Condimentum id venenatis a condimentum vitae sapien. Tellus pellentesque eu tincidunt tortor aliquam.',
-    unitPrice: 500,
+    unitPrice: 195,
     category: "Women's Shoes",
-    unitsInStock: 13,
+    unitsInStock: 30,
   },
 
   // men's shoes

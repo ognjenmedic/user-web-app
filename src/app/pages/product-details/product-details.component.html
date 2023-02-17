@@ -1,0 +1,255 @@
+<div class="">
+  <div
+    class="px-4 2xl:container 2xl:mx-auto flex-col md:flex-row md:px-6 2xl:px-20 flex justify-center items-stretch"
+  >
+    <div
+      class="flex xl:justify-between items-stretch flex-col md:w-2/3 lg:w-full"
+    >
+      <img
+        class="md:border-r lg:border-r-0 md:border-b lg:border-b-0 border-gray-200"
+        src="https://tuk-cdn.s3.amazonaws.com/can-uploader/product_detail_8_image.png"
+        alt="jacket"
+      />
+      <div
+        class="flex pb-12 hidden md:flex lg:hidden justify-start items-start flex-col w-full"
+      >
+        <div class="mt-8 xl:mt-10 flex jusitfy-start items-center space-x-4">
+          <p class="text-lg font-medium leading-none text-gray-800">Share :</p>
+          <button
+            aria-label="facebook"
+            class="w-6 hover:-translate-y-0.5 transition duration-400 ease-in-out"
+          >
+            <img
+              src="https://tuk-cdn.s3.amazonaws.com/can-uploader/product_detail_svg3.svg"
+              alt="facebook"
+            />
+          </button>
+          <button
+            aria-label="twitter"
+            class="w-6 hover:-translate-y-0.5 transition duration-400 ease-in-out"
+          >
+            <img
+              src="https://tuk-cdn.s3.amazonaws.com/can-uploader/product_detail_svg4.svg"
+              alt="twitter"
+            />
+          </button>
+          <button
+            aria-label="instagram"
+            class="w-6 hover:-translate-y-0.5 transition duration-400 ease-in-out"
+          >
+            <img
+              src="https://tuk-cdn.s3.amazonaws.com/can-uploader/product_detail_svg5.svg"
+              alt="instagram"
+            />
+          </button>
+        </div>
+        <div
+          class="mt-8 md:mt-10 xl:mt-12 w-full flex justify-between pb-4 border-b border-gray-200 items-center"
+        >
+          <p class="text-base font-medium leading-none text-gray-800">
+            Details
+          </p>
+          <button>
+            <img
+              class="w-6"
+              src="https://tuk-cdn.s3.amazonaws.com/can-uploader/product_detail_svg2.svg"
+              alt="add"
+            />
+          </button>
+        </div>
+        <div
+          class="mt-4 w-full flex justify-between pb-4 border-b border-gray-200 items-center"
+        >
+          <p class="text-base font-medium leading-none text-gray-800">
+            Size chart
+          </p>
+          <button>
+            <img
+              class="w-6"
+              src="https://tuk-cdn.s3.amazonaws.com/can-uploader/product_detail_svg2.svg"
+              alt="add"
+            />
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      class="lg:border-l border-gray-200 md:w-2/3 mt-7 md:mt-0 flex md:px-6 xl:px-8 2xl:justify-between items-start flex-col md:py-12"
+    >
+      <div class="flex w-full justify-between items-center">
+        <p
+          class="text-xl xl:text-2xl font-medium leading-5 xl:leading-normal text-gray-800"
+        >
+          Long Puffer Jacket
+        </p>
+        <div
+          class="w-20 h-9 text-base flex items-center justify-center leading-none text-gray-800 bg-yellow-100 rounded-full text-center"
+        >
+          Sale
+        </div>
+      </div>
+      <div class="flex w-full justify-between items-center mt-6 xl:mt-8">
+        <div class="flex justify-start items-center space-x-6">
+          <p class="text-xl leading-5 text-center text-gray-800">$400.00</p>
+          <p class="text-xl leading-5 line-through text-center text-gray-400">
+            $500.00
+          </p>
+        </div>
+        <div class="flex jusitfy-end items-center space-x-2">
+          <p class="text-base leading-none text-center text-gray-600">5 / 5</p>
+          <img
+            class="cursor-pointer"
+            src="https://tuk-cdn.s3.amazonaws.com/can-uploader/product_review_10_svg1.svg"
+            alt="star"
+          />
+        </div>
+      </div>
+      <div
+        class="xl:mt-10 mt-8 flex justify-start items-start flex-col space-y-5"
+      >
+        <p
+          class="text-lg xl:text-xl font-medium leading-none xl:leading-5 text-center text-gray-800"
+        >
+          Select Size
+        </p>
+        <div class="flex justify-start items-center space-x-3">
+          <button
+            class="w-8 h-5 flex items-center justify-center rounded-full text-lg leading-none text-gray-400"
+          >
+            XS
+          </button>
+          <button
+            class="w-8 h-5 flex items-center justify-center rounded-full text-lg leading-none text-gray-400"
+          >
+            S
+          </button>
+          <button
+            class="w-8 h-5 flex items-center justify-center focus:bg-gray-800 rounded-full focus:text-white text-lg leading-none text-gray-600"
+          >
+            M
+          </button>
+          <button
+            class="w-8 h-5 flex items-center justify-center focus:bg-gray-800 rounded-full focus:text-white text-lg leading-none text-gray-600"
+          >
+            L
+          </button>
+          <button
+            class="w-8 h-5 flex items-center justify-center focus:bg-gray-800 rounded-full focus:text-white text-lg leading-none text-gray-600"
+          >
+            XL
+          </button>
+        </div>
+      </div>
+      <div
+        class="mt-8 xl:mt-12 border border-gray-200 w-full flex justify-between items-center h-11"
+      >
+        <button
+          (click)="cal('sub')"
+          class="w-11 xl:w-16 border-r flex justify-center items-center h-full broder-gray-200"
+        >
+          <img
+            class="w-6"
+            src="https://tuk-cdn.s3.amazonaws.com/can-uploader/product_detail_svg1.svg"
+            alt="subtract"
+          />
+        </button>
+        <p id="num" class="text-xl leading-tight text-gray-600">{{ num }}</p>
+        <button
+          (click)="cal('add')"
+          class="w-11 xl:w-16 border-l flex justify-center items-center h-full broder-gray-200"
+        >
+          <img
+            class="w-6"
+            src="https://tuk-cdn.s3.amazonaws.com/can-uploader/product_detail_svg2.svg"
+            alt="add"
+          />
+        </button>
+      </div>
+      <div
+        class="xl:mt-10 mt-6 flex justify-center items-center w-full xl:flex-row flex-col space-y-4 xl:space-y-0 xl:space-x-8"
+      >
+        <button
+          class="w-full flex text-base hover:bg-gray-200 transition duration-400 ease-in-out leading-none text-gray-600 py-3 xl:py-4 justify-center items-center border rounded-full border-gray-600"
+        >
+          Add to cart
+        </button>
+        <button
+          class="w-full flex text-base leading-none bg-gray-800 transition duration-400 ease-in-out text-white hover:bg-gray-700 focus:text-gray-900 py-3 xl:py-4 justify-center items-center border rounded-full border-gray-800"
+        >
+          But it now
+        </button>
+      </div>
+      <p class="text-base leading-normal text-gray-600 mt-6 xl:mt-10">
+        Long Puffer Jacket is an insulated winter jacket from Rains' Thermal
+        category made from a breathable, yet waterproof fabric. Designed with
+        seamless woven chambers, the Long Puffer Jacket features 3MTM
+        ThinsulateTM Featherless Insulation, providing warmth in extreme
+        conditions. The jacket is crafted with stainless steel and durable
+        rubber trimmings, welt pockets, a padded hood and coated in Rains
+        signature matte PU.
+      </p>
+      <div
+        class="lg:flex pb-12 md:hidden justify-start items-start flex-col w-full"
+      >
+        <div class="mt-8 xl:mt-10 flex jusitfy-start items-center space-x-4">
+          <p class="text-lg font-medium leading-none text-gray-800">Share :</p>
+          <button
+            aria-label="facebook"
+            class="w-6 hover:-translate-y-0.5 transition duration-400 ease-in-out"
+          >
+            <img
+              src="https://tuk-cdn.s3.amazonaws.com/can-uploader/product_detail_svg3.svg"
+              alt="facebook"
+            />
+          </button>
+          <button
+            aria-label="twitter"
+            class="w-6 hover:-translate-y-0.5 transition duration-400 ease-in-out"
+          >
+            <img
+              src="https://tuk-cdn.s3.amazonaws.com/can-uploader/product_detail_svg4.svg"
+              alt="twitter"
+            />
+          </button>
+          <button
+            aria-label="instagram"
+            class="w-6 hover:-translate-y-0.5 transition duration-400 ease-in-out"
+          >
+            <img
+              src="https://tuk-cdn.s3.amazonaws.com/can-uploader/product_detail_svg5.svg"
+              alt="instagram"
+            />
+          </button>
+        </div>
+        <div
+          class="mt-8 md:mt-10 xl:mt-12 w-full flex justify-between pb-4 border-b border-gray-200 items-center"
+        >
+          <p class="text-base font-medium leading-none text-gray-800">
+            Details
+          </p>
+          <button>
+            <img
+              class="w-6"
+              src="https://tuk-cdn.s3.amazonaws.com/can-uploader/product_detail_svg2.svg"
+              alt="add"
+            />
+          </button>
+        </div>
+        <div
+          class="mt-4 w-full flex justify-between pb-4 border-b border-gray-200 items-center"
+        >
+          <p class="text-base font-medium leading-none text-gray-800">
+            Size chart
+          </p>
+          <button>
+            <img
+              class="w-6"
+              src="https://tuk-cdn.s3.amazonaws.com/can-uploader/product_detail_svg2.svg"
+              alt="add"
+            />
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

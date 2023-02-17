@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { PRODUCTS } from 'src/db-data';
-import { Product } from '../common/product';
+import { Product } from '../../common/product';
 
 @Component({
   selector: 'app-product-card',
