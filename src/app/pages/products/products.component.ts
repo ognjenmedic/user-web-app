@@ -38,4 +38,11 @@ export class ProductsComponent implements OnInit {
       }
     );
   }
+
+  // new code - function to subscribe and list all products
+  listProducts() {
+    this.productService.getProducts().subscribe((data) => {
+      this.products = data;
+    });
+  }
 }

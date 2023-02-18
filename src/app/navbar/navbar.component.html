@@ -112,7 +112,7 @@
                     />
                   </svg>
                 </div>
-                <p class="text-base text-right">Favourites</p>
+                <p class="text-base text-right">Wishlist</p>
               </a>
             </li>
             <li>
@@ -120,9 +120,9 @@
                 href="javascript:void(0)"
                 class="text-gray-800 dark:text-white flex items-center space-x-2 focus:outline-none focus:ring-2 focus:ring-gray-800 hover:underline"
               >
-                <div>
+                <div routerLink="/cart-details" class="hover:shadow-lg">
                   <svg
-                    class="fill-stroke"
+                    class="fill-stroke hover:shadow-lg"
                     width="20"
                     height="22"
                     viewBox="0 0 20 22"
@@ -152,7 +152,7 @@
                     />
                   </svg>
                 </div>
-                <p class="text-base text-right">Bag</p>
+                <app-cart-status routerLink="/cart-details"></app-cart-status>
               </a>
             </li>
           </ul>
@@ -205,6 +205,14 @@
                 class="dark:text-white text-base text-right text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-800 hover:underline"
               >
                 New
+              </a>
+            </li>
+            <li>
+              <a
+                routerLink="/products"
+                class="dark:text-white text-base text-right text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-800 hover:underline"
+              >
+                All
               </a>
             </li>
             <li>
@@ -593,7 +601,7 @@
                   />
                 </svg>
               </div>
-              <p class="text-base">Bag</p>
+              <app-cart-status></app-cart-status>
             </a>
           </li>
           <li>

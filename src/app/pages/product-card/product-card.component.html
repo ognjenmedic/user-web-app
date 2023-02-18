@@ -1,7 +1,7 @@
 <div class="flex justify-center">
   <div class="block rounded-lg shadow-lg bg-white max-w-sm text-center">
     <div class="border-b border-gray-300">
-      <a routerLink="/products/{{ product.sku }}">
+      <a routerLink="/products-details">
         <img src="{{ product.imageUrl }} " alt="product.productName" />
       </a>
     </div>
@@ -25,6 +25,7 @@
       <!-- Code block for button with black outline ends -->
       <!-- Code block for button with black outline starts -->
       <button
+        (click)="addToCart(product)"
         class="mx-2 my-2 bg-gray-900 hover:bg-gray-700 transition duration-150 ease-in-out rounded border border-gray-800 text-slate-50 px-3 py-2 text-xs"
       >
         Add to Cart

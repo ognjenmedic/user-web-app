@@ -13,7 +13,7 @@ export class ProductsService {
   }
 
   getProducts(): Observable<Product[]> {
-    const params = new HttpParams().set('page', '1').set('pageSize', '10');
+    const params = new HttpParams().set('page', '0').set('pageSize', '6');
     return this.http.get<Product[]>('/PRODUCTS', { params });
   }
 }

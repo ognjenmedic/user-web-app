@@ -17,6 +17,8 @@ import { CategoriesComponent } from './pages/categories/categories.component';
 import { ProductDetailsComponent } from './pages/product-details/product-details.component';
 import { HomeComponent } from './pages/home/home.component';
 import { FooterComponent } from './pages/footer/footer.component';
+import { CartStatusComponent } from './pages/cart-status/cart-status.component';
+import { CartDetailsComponent } from './pages/cart-details/cart-details.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,8 @@ import { FooterComponent } from './pages/footer/footer.component';
     ProductDetailsComponent,
     HomeComponent,
     FooterComponent,
+    CartStatusComponent,
+    CartDetailsComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
