@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Product, ProductCategory } from '../common/product';
 import { ProductsService } from '../shared/services/products-service/products.service';
 
@@ -8,6 +9,8 @@ import { ProductsService } from '../shared/services/products-service/products.se
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
+  // product: undefined; // added new 19 feb
+  // categoryId: number; // added new 19 feb
   products!: Product[]; // new code
   public ProductCategoryEnum: typeof ProductCategory;
   mobileMenu: boolean = true;
@@ -15,7 +18,10 @@ export class NavbarComponent implements OnInit {
     this.mobileMenu = !this.mobileMenu;
   }
 
-  constructor(private productService: ProductsService) {
+  constructor(
+    private productService: ProductsService,
+    private route: ActivatedRoute
+  ) {
     this.ProductCategoryEnum = ProductCategory;
   }
 
@@ -32,8 +38,8 @@ export class NavbarComponent implements OnInit {
   }
   // new code - function to subscribe and list all products
   listProducts() {
-    this.productService.getProducts().subscribe((products) => {
-      this.products = products;
+    this.productService.getProducts().subscribe((data) => {
+      this.products = data;
     });
   }
 }

@@ -16,4 +16,9 @@ export class ProductsService {
     const params = new HttpParams().set('page', '0').set('pageSize', '6');
     return this.http.get<Product[]>('/PRODUCTS', { params });
   }
+  // get product based on product id from route
+  getProduct(productIdFromRoute: number): Observable<Product> {
+    const productUrl = `/PRODUCTS/{{productIdFromRoute}} `;
+    return this.http.get<Product>(productUrl);
+  }
 }

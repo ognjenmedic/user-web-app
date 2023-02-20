@@ -1,6 +1,8 @@
 <div
   class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 lg:gap-6 px-3 pt-0 pb-3 mx-10 mt-2"
 >
+  <!--<div *ngIf="product">
+     // added new 19 feb -->
   <app-product-card
     *ngFor="let product of filteredProducts"
     [product]="product"

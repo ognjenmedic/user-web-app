@@ -8,11 +8,12 @@ import { ProductDetailsComponent } from './pages/product-details/product-details
 import { ProductsComponent } from './pages/products/products.component';
 
 const routes: Routes = [
-  { path: 'product-details', component: ProductDetailsComponent },
+  { path: 'products/:productSku', component: ProductDetailsComponent },
+  { path: 'products/:categoryId', component: ProductsComponent }, // added new 19 feb
   { path: 'cart-details', component: CartDetailsComponent },
-  { path: '', component: HomeComponent },
-  { path: 'category/:id', component: ProductsComponent },
-  { path: 'category', component: ProductsComponent },
+  { path: '', component: CategoriesComponent },
+  // { path: 'category/:id', component: ProductsComponent },
+  { path: 'categories', component: ProductsComponent },
   { path: 'products', component: ProductsComponent },
   // { path: '', redirectTo: '/products', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent },
