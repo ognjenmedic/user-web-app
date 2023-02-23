@@ -12,7 +12,7 @@ import { PRODUCTS } from 'src/db-data';
 })
 export class ProductDetailsComponent implements OnInit {
   product: Product;
-  products!: Product[];
+  // products!: Product[];
 
   num: number = 1;
 

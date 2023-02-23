@@ -10,6 +10,7 @@ export interface Product {
 }
 
 export enum ProductCategory {
+  ALL,
   WOMEN = 1,
   MEN = 2,
   KIDS = 3,

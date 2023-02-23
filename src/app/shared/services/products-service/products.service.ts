@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { map, Observable, Subject } from 'rxjs';
 import { Product, ProductCategory } from 'src/app/common/product';
 
 @Injectable({
@@ -13,12 +13,21 @@ export class ProductsService {
   }
 
   getProducts(): Observable<Product[]> {
-    const params = new HttpParams().set('page', '0').set('pageSize', '6');
+    const params = new HttpParams().set('_page', '0').set('_limit', '30');
     return this.http.get<Product[]>('/PRODUCTS', { params });
   }
   // get product based on product id from route
   getProduct(productIdFromRoute: number): Observable<Product> {
-    const productUrl = `/PRODUCTS/{{productIdFromRoute}} `;
-    return this.http.get<Product>(productUrl);
+    // const productUrl = `/PRODUCTS/{{productIdFromRoute}} `;
+    const productUrl = `/PRODUCTS?sku=${productIdFromRoute} `;
+
+    return this.http.get<Product>(productUrl).pipe(map((res: any) => res[0]));
+  }
+
+  getProductByCategory(categoryIdFromRoute: number): Observable<Product> {
+    // const productUrl = `/PRODUCTS/{{productIdFromRoute}} `;
+    const url = `/PRODUCTS?categoryId=${categoryIdFromRoute} `;
+
+    return this.http.get<Product>(url);
   }
 }

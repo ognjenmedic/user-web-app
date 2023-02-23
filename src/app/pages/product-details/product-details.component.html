@@ -1,4 +1,4 @@
-<div class="px-2 py-12">
+<div class="px-2 py-12" *ngIf="product">
   <div class="lg:max-w-[1440px] md:max-w-[744px] max-w-[375px] mx-auto">
     <div class="flex items-center justify-center">
       <div
@@ -20,18 +20,18 @@
                   >
                     <img
                       class="hidden lg:block md:hidden mx-auto"
-                      src="{{ product.imageUrl }}"
-                      alt="{{ product.productName }}"
+                      [src]="product.imageUrl"
+                      [alt]="product.productName"
                     />
                     <img
                       class="hidden lg:hidden md:block"
-                      src="{{ product.imageUrl }}"
-                      alt="{{ product.productName }}"
+                      [src]="product.imageUrl"
+                      [alt]="product.productName"
                     />
                     <img
                       class="block lg:hidden md:hidden mx-auto"
-                      src="{{ product.imageUrl }}"
-                      alt="{{ product.productName }}"
+                      [src]="product.imageUrl"
+                      [alt]="product.productName"
                     />
                   </div>
                   <div
@@ -40,13 +40,13 @@
                   >
                     <img
                       class="hidden lg:block md:block"
-                      src="{{ product.imageUrl }} "
-                      alt="{{ product.productName }}"
+                      [src]="product.imageUrl"
+                      [alt]="product.productName"
                     />
                     <img
                       class="block lg:hidden md:hidden mx-auto"
-                      src="{{ product.imageUrl }}"
-                      alt="{{ product.productName }}"
+                      [src]="product.imageUrl"
+                      [alt]="product.productName"
                     />
                   </div>
                   <div
@@ -55,13 +55,13 @@
                   >
                     <img
                       class="hidden lg:block md:block"
-                      src="{{ product.imageUrl }}"
-                      alt="{{ product.productName }}"
+                      [src]="product.imageUrl"
+                      [alt]="product.productName"
                     />
                     <img
                       class="block lg:hidden md:hidden mx-auto"
-                      src="{{ product.imageUrl }}"
-                      alt="{{ product.productName }}"
+                      [src]="product.imageUrl"
+                      [alt]="product.productName"
                     />
                   </div>
                   <div
@@ -70,13 +70,13 @@
                   >
                     <img
                       class="hidden lg:block md:block"
-                      src="{{ product.imageUrl }} "
-                      alt="{{ product.productName }}"
+                      [src]="product.imageUrl"
+                      [alt]="product.productName"
                     />
                     <img
                       class="block lg:hidden md:hidden mx-auto"
-                      src="{{ product.imageUrl }}"
-                      alt="{{ product.productName }}"
+                      [src]="product.imageUrl"
+                      [alt]="product.productName"
                     />
                   </div>
                 </div>
@@ -110,10 +110,10 @@
             </div>
             <div class="flex items-center mt-12 justify-evenly gap-x-4 gap-y-6">
               <div class="flex flex-col items-center justify-center gap-y-6">
-                <img src="{{ product.imageUrl }}" alt="" />
+                <img [src]="product.imageUrl" alt="" />
               </div>
               <div class="flex flex-col items-center justify-center gap-y-6">
-                <img src="{{ product.imageUrl }}" alt="" />
+                <img [src]="product.imageUrl" alt="" />
               </div>
               <div class="flex flex-col items-center justify-center gap-y-6">
                 <img

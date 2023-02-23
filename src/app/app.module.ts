@@ -15,10 +15,27 @@ import { ProductCardComponent } from './pages/product-card/product-card.componen
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { CategoriesComponent } from './pages/categories/categories.component';
 import { ProductDetailsComponent } from './pages/product-details/product-details.component';
-import { HomeComponent } from './pages/home/home.component';
 import { FooterComponent } from './pages/footer/footer.component';
 import { CartStatusComponent } from './pages/cart-status/cart-status.component';
 import { CartDetailsComponent } from './pages/cart-details/cart-details.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { LoginStatusComponent } from './pages/login-status/login-status.component';
+
+import {
+  OktaAuthModule,
+  OktaCallbackComponent,
+  OKTA_CONFIG,
+} from '@okta/okta-angular';
+
+import { OktaAuth } from '@okta/okta-auth-js';
+
+import myAppConfig from './common/my-app-config';
+import { ProductsService } from './shared/services/products-service/products.service';
+import { HomeComponent } from './pages/home/home.component';
+
+const oktaConfig = myAppConfig.oidc;
+
+const oktaAuth = new OktaAuth(oktaConfig);
 
 @NgModule({
   declarations: [
@@ -38,9 +55,19 @@ import { CartDetailsComponent } from './pages/cart-details/cart-details.componen
     FooterComponent,
     CartStatusComponent,
     CartDetailsComponent,
+    LoginStatusComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
-  providers: [],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    OktaAuthModule,
+  ],
+  providers: [
+    ProductsService,
+    { provide: OKTA_CONFIG, useValue: { oktaAuth } },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

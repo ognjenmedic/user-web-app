@@ -63,7 +63,7 @@
               >
                 <div>
                   <svg
-                    class="fill-stroke"
+                    class="fill-stroke hover:shadow-lg"
                     width="18"
                     height="20"
                     viewBox="0 0 18 20"
@@ -86,7 +86,7 @@
                     />
                   </svg>
                 </div>
-                <p class="text-base text-right">My account</p>
+                <app-login-status></app-login-status>
               </a>
             </li>
             <li>
@@ -201,15 +201,7 @@
           <ul class="flex items-center space-x-6">
             <li>
               <a
-                href="javascript:void(0)"
-                class="dark:text-white text-base text-right text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-800 hover:underline"
-              >
-                New
-              </a>
-            </li>
-            <li>
-              <a
-                routerLink="/products"
+                (click)="selectCategory(ProductCategoryEnum.ALL)"
                 class="dark:text-white text-base text-right text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-800 hover:underline"
               >
                 All
@@ -217,7 +209,7 @@
             </li>
             <li>
               <a
-                (click)="selectCategory(ProductCategoryEnum.MEN)"
+                [routerLink]="['/products', ProductCategoryEnum.MEN]"
                 class="dark:text-white text-base text-right text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-800 hover:underline"
               >
                 Men
@@ -225,7 +217,7 @@
             </li>
             <li>
               <a
-                (click)="selectCategory(ProductCategoryEnum.WOMEN)"
+                [routerLink]="['/products', ProductCategoryEnum.WOMEN]"
                 href="javascript:void(0)"
                 class="dark:text-white text-base text-right text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-800 hover:underline"
               >
@@ -238,14 +230,6 @@
                 class="dark:text-white text-base text-right text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-800 hover:underline"
               >
                 Kids
-              </a>
-            </li>
-            <li>
-              <a
-                href="javascript:void(0)"
-                class="dark:text-white text-base text-right text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-800 hover:underline"
-              >
-                Magazine
               </a>
             </li>
           </ul>

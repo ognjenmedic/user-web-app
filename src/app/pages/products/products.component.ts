@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { filter, firstValueFrom, map, Observable } from 'rxjs';
 import { Product, ProductCategory } from 'src/app/common/product';
 import { ProductsService } from 'src/app/shared/services/products-service/products.service';
@@ -21,31 +21,38 @@ export class ProductsComponent implements OnInit {
 
   constructor(
     private productService: ProductsService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {
     this.products = [];
     this.filteredProducts = [];
   }
 
   ngOnInit() {
-    firstValueFrom(this.productService.getProducts()).then(
-      (value: Product[]) => {
-        this.products = value;
-        this.filteredProducts = value;
-      }
-    );
+    // firstValueFrom(this.productService.getProducts()).then(
+    //   (value: Product[]) => {
+    //     this.products = value;
+    //     this.filteredProducts = value;
+    //   }
+    // );
 
-    this.productService.selectedCategory$.subscribe(
-      (productCategory: ProductCategory) => {
-        this.filteredProducts = this.products.filter(
-          (value: Product) => value.categoryId === productCategory
-        );
-      }
-    );
+    // this.productService.selectedCategory$.subscribe(
+    //   (productCategory: ProductCategory) => {
+    //     this.filteredProducts = this.products.filter(
+    //       (value: Product) => value.categoryId === productCategory
+    //     );
+    //   }
+    // );
 
     // // First get the category id from the current route. // added new 19 feb
-    // const routeParams = this.route.snapshot.paramMap;
+    // this.productService.selectedCategory$.subscribe((event: any) => {
+    const routeParams = this.route.snapshot.paramMap.get('categoryId');
     // const categoryIdFromRoute = Number(routeParams.get('categoryId'));
+    console.log(routeParams);
+    //   this.productService
+    //     .getProductByCategory()
+    //     .subscribe((data: any) => (this.filteredProducts = data));
+    // });
 
     // // Find the product that correspond with the id provided in route // added new 19 feb
     // this.product = PRODUCTS.find(
