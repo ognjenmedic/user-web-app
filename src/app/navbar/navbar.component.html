@@ -209,7 +209,7 @@
             </li>
             <li>
               <a
-                [routerLink]="['/products', ProductCategoryEnum.MEN]"
+                (click)="selectCategory(ProductCategoryEnum.MEN)"
                 class="dark:text-white text-base text-right text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-800 hover:underline"
               >
                 Men
@@ -217,7 +217,7 @@
             </li>
             <li>
               <a
-                [routerLink]="['/products', ProductCategoryEnum.WOMEN]"
+                (click)="selectCategory(ProductCategoryEnum.WOMEN)"
                 href="javascript:void(0)"
                 class="dark:text-white text-base text-right text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-800 hover:underline"
               >

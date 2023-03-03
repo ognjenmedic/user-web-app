@@ -11,7 +11,7 @@ import { ProductsService } from '../shared/services/products-service/products.se
 export class NavbarComponent implements OnInit {
   // product: undefined; // added new 19 feb
   // categoryId: number; // added new 19 feb
-  // products!: Product[]; // new code
+  products!: Product[]; // new code
   public ProductCategoryEnum: typeof ProductCategory;
   mobileMenu: boolean = true;
   mobileMenuBtn() {
@@ -30,9 +30,8 @@ export class NavbarComponent implements OnInit {
 
   selectCategory(productCategory: ProductCategory): void {
     this.router.navigateByUrl(`/products?categoryId=${productCategory}`);
-    this.productService.selectedCategory$.next(productCategory);
   }
-  // new code
+  // // new code
   // allProducts(): void {
   //   this.productService.getProducts().subscribe((products) => {
   //     this.products = products;
@@ -43,4 +42,5 @@ export class NavbarComponent implements OnInit {
   //   this.productService.getProducts().subscribe((data) => {
   //     this.products = data;
   //   });
+  // }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ProductCategory } from 'src/app/common/product';
 import { ProductsService } from 'src/app/shared/services/products-service/products.service';
 
@@ -10,12 +11,12 @@ import { ProductsService } from 'src/app/shared/services/products-service/produc
 export class CategoriesComponent implements OnInit {
   public ProductCategoryEnum: typeof ProductCategory;
 
-  constructor(private productService: ProductsService) {
+  constructor(private productService: ProductsService, private router: Router) {
     this.ProductCategoryEnum = ProductCategory;
   }
 
   ngOnInit(): void {}
   selectCategory(productCategory: ProductCategory): void {
-    this.productService.selectedCategory$.next(productCategory);
+    this.router.navigateByUrl(`/products?categoryId=${productCategory}`);
   }
 }

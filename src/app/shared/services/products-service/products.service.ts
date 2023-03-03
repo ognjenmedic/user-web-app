@@ -1,15 +1,15 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable, Subject } from 'rxjs';
+import { map, Observable, ReplaySubject, Subject } from 'rxjs';
 import { Product, ProductCategory } from 'src/app/common/product';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductsService {
-  public selectedCategory$: Subject<ProductCategory>;
+  public selectedCategory$: ReplaySubject<ProductCategory>;
   constructor(private http: HttpClient) {
-    this.selectedCategory$ = new Subject();
+    this.selectedCategory$ = new ReplaySubject();
   }
 
   getProducts(): Observable<Product[]> {
@@ -21,13 +21,13 @@ export class ProductsService {
     // const productUrl = `/PRODUCTS/{{productIdFromRoute}} `;
     const productUrl = `/PRODUCTS?sku=${productIdFromRoute} `;
 
-    return this.http.get<Product>(productUrl).pipe(map((res: any) => res[0]));
+    return this.http.get<Product>(productUrl).pipe(map((res: any) => res[0])); // is alternative to this maybe this: this.router.navigateByUrl(`/products?sku=${product.sku}`); ?
   }
 
-  getProductByCategory(categoryIdFromRoute: number): Observable<Product> {
+  getProductByCategoryId(categoryIdFromRoute: number): Observable<Product> {
     // const productUrl = `/PRODUCTS/{{productIdFromRoute}} `;
-    const url = `/PRODUCTS?categoryId=${categoryIdFromRoute} `;
+    const productUrl = `/PRODUCTS?categoryId=${categoryIdFromRoute} `; // should this be categoryUrl instead of productUrl?
 
-    return this.http.get<Product>(url);
+    return this.http.get<Product>(productUrl);
   }
 }

@@ -1,3 +1,4 @@
+import { OrdersService } from './../../orders.service';
 import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
@@ -14,6 +15,7 @@ import { FormService } from 'src/app/shared/services/form.service';
 })
 export class CheckoutComponent implements OnInit {
   checkoutFormGroup: FormGroup;
+  orderData: any;
 
   totalPrice: number;
   totalQuantity: number;
@@ -24,7 +26,8 @@ export class CheckoutComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private formService: FormService
+    private formService: FormService,
+    private ordersService: OrdersService
   ) {
     this.totalPrice = 0;
     this.totalQuantity = 0;
@@ -147,6 +150,13 @@ export class CheckoutComponent implements OnInit {
     this.formService.getCreditCardMonths(startMonth).subscribe((data) => {
       console.log('Retrieve credit card months: ' + JSON.stringify(data));
       this.creditCardMonths = data;
+    });
+  }
+
+  placeOrder(orderData) {
+    this.ordersService.placeOrder(orderData).subscribe((res) => {
+      alert('Your order has been placed.');
+      this.checkoutFormGroup.reset;
     });
   }
 }
