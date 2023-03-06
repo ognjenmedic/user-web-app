@@ -263,6 +263,7 @@
             </svg>
           </div>
           <input
+            (keyup)="searchProducts($event)"
             type="text"
             class="text-sm text-gray-600 dark:text-white dark:placeholder-gray-300 bg-transparent focus:outline-none"
             placeholder="Search for products"

@@ -1,20 +1,21 @@
 <div class="login-status-navbar">
-  <p
+  <span
     class="text-base text-right"
-    *ngIf="userService?.userState | async as user"
+    *ngIf="userService.userState | async as user"
   >
     Welcome back {{ user.name }}!
-  </p>
+  </span>
 
   <button
-    *ngIf="!userService?.userState | async"
+    *ngIf="!userService.isAuthenticated"
     class="mx-2 my-2 bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 rounded border border-gray-800 text-gray-800 px-8 py-2 text-sm font-bold hover:shadow-lg"
     routerLink="/login"
   >
     Login
   </button>
   <button
-    *ngIf="userService?.userState | async"
+    *ngIf="userService.isAuthenticated"
+    (click)="userService.logout()"
     class="mx-2 my-2 bg-white transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 rounded border border-gray-800 text-gray-800 px-8 py-2 text-sm"
   >
     Logout

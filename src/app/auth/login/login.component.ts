@@ -44,10 +44,9 @@ export class LoginComponent implements OnInit {
           );
         });
         if (user) {
-          alert('Login Succesful');
           this.loginForm.reset();
           this.userService.userState.next(user);
-          this.router.navigate(['home']);
+          this.router.navigate(['']);
         } else {
           alert('user not found');
         }

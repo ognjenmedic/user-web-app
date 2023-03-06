@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { debounceTime, throttle, throttleTime } from 'rxjs';
 import { Product, ProductCategory } from '../common/product';
 import { ProductsService } from '../shared/services/products-service/products.service';
 
@@ -43,4 +44,18 @@ export class NavbarComponent implements OnInit {
   //     this.products = data;
   //   });
   // }
+
+  searchProducts(query: KeyboardEvent) {
+    if (query) {
+      const element = query.target as HTMLInputElement;
+      // console.log(element.value);
+      this.productService
+        .searchProducts(element.value)
+        .pipe(throttleTime(3000))
+        .subscribe((result) => {
+          console.warn(result);
+          this.productService.products.next(result);
+        });
+    }
+  }
 }

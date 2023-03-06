@@ -9,7 +9,7 @@
     <hr />
 
     <div
-      *ngFor="let tempCartItem of cartItems"
+      *ngFor="let tempCartItem of cartItems; let i = index"
       class="flex flex-col md:flex-row items-strech mt-10 mb-5 md:mt-14 lg:mt-16"
     >
       <div>
@@ -36,8 +36,7 @@
           <p
             class="mt-4 text-sm leading-tight text-gray-600 md:w-8/12 lg:w-10/12"
           >
-            If you are going to use a passage of Lorem Ipsum,you need to be sure
-            there isn't anything.
+            {{ tempCartItem.description }}
           </p>
           <div class="mt-8 flex space-x-6 items-center">
             <!-- <a
@@ -46,7 +45,7 @@
               >Edit</a
             > -->
             <a
-              href="javascript:void(0)"
+              (click)="removeCartItem(i)"
               class="text-base text-gray-600 underline focus:outline-none focus:ring-2 focus:ring-gray-600 hover:text-black"
               >Remove</a
             >
@@ -165,8 +164,7 @@
           </div>
         </div>
         <p class="mt-4 w-11/12text-sm leading-tight text-gray-600">
-          If you are going to use a passage of Lorem Ipsum,you need to be sure
-          there isn't anything.
+          {{ tempCartItem.description }}
         </p>
         <div class="mt-8 flex space-x-6 items-center">
           <!-- <a
@@ -238,7 +236,9 @@
       <div class="w-full md:w-9/12 lg:w-auto">
         <div class="flex items-center justify-between">
           <h3 class="text-2xl text-gray-800">Total</h3>
-          <p class="text-2xl font-semibold text-gray-800">$2790</p>
+          <p class="text-2xl font-semibold text-gray-800">
+            {{ this.totalPrice | currency }}
+          </p>
         </div>
         <button
           routerLink="/checkout"

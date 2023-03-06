@@ -1,15 +1,19 @@
+import { query } from '@angular/animations';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable, ReplaySubject, Subject } from 'rxjs';
+import { BehaviorSubject, map, Observable, ReplaySubject, Subject } from 'rxjs';
 import { Product, ProductCategory } from 'src/app/common/product';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductsService {
+
+  products: BehaviorSubject<Product[]>;
   public selectedCategory$: ReplaySubject<ProductCategory>;
   constructor(private http: HttpClient) {
     this.selectedCategory$ = new ReplaySubject();
+    this.products = new BehaviorSubject(null);
   }
 
   getProducts(): Observable<Product[]> {
@@ -29,5 +33,11 @@ export class ProductsService {
     const productUrl = `/PRODUCTS?categoryId=${categoryIdFromRoute} `; // should this be categoryUrl instead of productUrl?
 
     return this.http.get<Product>(productUrl);
+  }
+
+  searchProducts(query: string) {
+    return this.http.get<Product[]>(
+      `http://localhost:3000/PRODUCTS?q=${query}`
+    );
   }
 }

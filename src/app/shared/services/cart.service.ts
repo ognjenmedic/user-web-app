@@ -78,4 +78,9 @@ export class CartService {
       console.log('------');
     }
   }
+
+  removeCartItem(index: number) {
+    // let removedCartItem = this.cartItems[index]
+    return this.cartItems.splice(index, 1);
+  }
 }

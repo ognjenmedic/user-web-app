@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { User } from './user';
@@ -9,18 +8,28 @@ import { User } from './user';
   providedIn: 'root',
 })
 export class UserService {
-  public userState: BehaviorSubject<User> = new BehaviorSubject(null);
+  public userState: BehaviorSubject<User>;
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router) {
+    this.userState = new BehaviorSubject(null);
+  }
 
-  register(userData: any) {
+  public register(userData: any) {
     return this.http.post<any>(
       'http://localhost:3000/signedUpUsersList',
       userData
     );
   }
 
-  login() {
+  public login() {
     return this.http.get<any>('http://localhost:3000/signedUpUsersList');
+  }
+
+  public logout() {
+    this.userState.next(null);
+  }
+
+  public get isAuthenticated() {
+    return !!this.userState.value;
   }
 }

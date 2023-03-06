@@ -13,26 +13,26 @@ export class ProductsComponent implements OnInit {
   // categoryId: number; // added new 19 feb
   // product: undefined; // added new 19 feb
   productsSub: any;
-  products: Product[];
-  filteredProducts: Product[];
+  allProducts: Product[];
+  // filteredProducts: Product[];
   selectedCategory: ProductCategory;
   ProductCategoryEnum: typeof ProductCategory;
   // selectedCategory!: string;
 
   constructor(
-    private productService: ProductsService,
+    public productService: ProductsService,
     private route: ActivatedRoute
   ) {
-    this.products = [];
-    this.filteredProducts = [];
+    this.allProducts = [];
+    // this.filteredProducts = [];
     this.ProductCategoryEnum = ProductCategory;
   }
 
   ngOnInit() {
     firstValueFrom(this.productService.getProducts()).then(
       (value: Product[]) => {
-        this.products = value;
-        this.filteredProducts = value;
+        this.productService.products.next(value);
+        this.allProducts = value;
       }
     );
 
@@ -49,10 +49,10 @@ export class ProductsComponent implements OnInit {
         this.productService
           .getProductByCategoryId(categoryId)
           .subscribe((products: any) => {
-            this.filteredProducts = products;
+            this.productService.products.next(products);
           });
       } else {
-        this.filteredProducts = this.products;
+        this.productService.products.next(this.allProducts);
       }
     });
   }
