@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { UserService } from './user.service';
 
 // import { PRODUCTS } from 'src/db-data';
 // import { Product } from './common/product';
@@ -9,6 +10,11 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  constructor() {}
-  ngOnInit() {}
+  constructor(private userService: UserService) {}
+  ngOnInit() {
+    const userState = window.localStorage.getItem('user');
+    if (userState) {
+      this.userService.userState.next(JSON.parse(userState));
+    }
+  }
 }

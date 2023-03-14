@@ -4,7 +4,7 @@
   <!--<div *ngIf="product">
      // added new 19 feb -->
   <app-product-card
-    *ngFor="let product of productService.products | async"
+    *ngFor="let product of filteredProducts"
     [product]="product"
   ></app-product-card>
 </div>

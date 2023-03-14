@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/common/product';
-import { ProductsService } from 'src/app/shared/services/products-service/products.service';
+import { ProductsService } from 'src/app/services/products.service';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/internal/Observable';
 import { PRODUCTS } from 'src/db-data';

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
 import { Product, ProductCategory } from 'src/app/common/product';
-import { ProductsService } from 'src/app/shared/services/products-service/products.service';
+import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
   selector: 'app-products',
@@ -14,7 +14,7 @@ export class ProductsComponent implements OnInit {
   // product: undefined; // added new 19 feb
   productsSub: any;
   allProducts: Product[];
-  // filteredProducts: Product[];
+  filteredProducts: Product[];
   selectedCategory: ProductCategory;
   ProductCategoryEnum: typeof ProductCategory;
   // selectedCategory!: string;
@@ -24,14 +24,14 @@ export class ProductsComponent implements OnInit {
     private route: ActivatedRoute
   ) {
     this.allProducts = [];
-    // this.filteredProducts = [];
+    this.filteredProducts = [];
     this.ProductCategoryEnum = ProductCategory;
   }
 
   ngOnInit() {
     firstValueFrom(this.productService.getProducts()).then(
       (value: Product[]) => {
-        this.productService.products.next(value);
+        this.filteredProducts = value;
         this.allProducts = value;
       }
     );
@@ -45,14 +45,15 @@ export class ProductsComponent implements OnInit {
     // );
     this.route.queryParams.subscribe((params: any) => {
       const categoryId = params.categoryId;
+      console.log(params);
       if (categoryId != this.ProductCategoryEnum.ALL) {
         this.productService
           .getProductByCategoryId(categoryId)
           .subscribe((products: any) => {
-            this.productService.products.next(products);
+            this.filteredProducts = products;
           });
       } else {
-        this.productService.products.next(this.allProducts);
+        this.filteredProducts = this.allProducts;
       }
     });
   }

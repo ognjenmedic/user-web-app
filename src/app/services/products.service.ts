@@ -8,12 +8,11 @@ import { Product, ProductCategory } from 'src/app/common/product';
   providedIn: 'root',
 })
 export class ProductsService {
-
-  products: BehaviorSubject<Product[]>;
+  products: Subject<Product[]>;
   public selectedCategory$: ReplaySubject<ProductCategory>;
   constructor(private http: HttpClient) {
     this.selectedCategory$ = new ReplaySubject();
-    this.products = new BehaviorSubject(null);
+    this.products = new Subject();
   }
 
   getProducts(): Observable<Product[]> {

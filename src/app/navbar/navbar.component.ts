@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { debounceTime, throttle, throttleTime } from 'rxjs';
 import { Product, ProductCategory } from '../common/product';
-import { ProductsService } from '../shared/services/products-service/products.service';
+import { ProductsService } from '../services/products.service';
 
 @Component({
   selector: 'app-navbar',
@@ -13,6 +13,7 @@ export class NavbarComponent implements OnInit {
   // product: undefined; // added new 19 feb
   // categoryId: number; // added new 19 feb
   products!: Product[]; // new code
+  searchResult: undefined | Product[];
   public ProductCategoryEnum: typeof ProductCategory;
   mobileMenu: boolean = true;
   mobileMenuBtn() {
@@ -20,11 +21,12 @@ export class NavbarComponent implements OnInit {
   }
 
   constructor(
-    private productService: ProductsService,
+    public productService: ProductsService,
     private route: ActivatedRoute,
     private router: Router
   ) {
     this.ProductCategoryEnum = ProductCategory;
+    this.searchResult = [];
   }
 
   ngOnInit(): void {}
@@ -46,16 +48,23 @@ export class NavbarComponent implements OnInit {
   // }
 
   searchProducts(query: KeyboardEvent) {
-    if (query) {
-      const element = query.target as HTMLInputElement;
-      // console.log(element.value);
+    const element = query.target as HTMLInputElement;
+    console.log(element.value);
+    if (element.value.length > 1) {
       this.productService
         .searchProducts(element.value)
-        .pipe(throttleTime(3000))
+        //   .pipe(throttleTime(3000))
         .subscribe((result) => {
-          console.warn(result);
+          // console.warn(result);
+          // this.searchResult = result;
           this.productService.products.next(result);
         });
+    } else {
+      this.productService.products.next([]);
     }
+  }
+
+  hideSearchResults() {
+    // this.productService.products.next([]);
   }
 }

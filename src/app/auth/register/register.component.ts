@@ -37,6 +37,9 @@ export class RegisterComponent implements OnInit {
         Validators.minLength(8),
       ]),
     });
+    this.registrationForm.valueChanges.subscribe((x) => {
+      console.log(x);
+    });
   }
 
   register() {

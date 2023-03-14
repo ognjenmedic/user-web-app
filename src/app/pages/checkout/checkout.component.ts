@@ -1,3 +1,4 @@
+import { Order } from './../../common/order';
 import { OrdersService } from './../../orders.service';
 import { Component, OnInit } from '@angular/core';
 import {
@@ -6,7 +7,8 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { FormService } from 'src/app/shared/services/form.service';
+import { FormService } from 'src/app/services/form.service';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-checkout',
@@ -27,7 +29,8 @@ export class CheckoutComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private formService: FormService,
-    private ordersService: OrdersService
+    private ordersService: OrdersService,
+    private cartService: CartService
   ) {
     this.totalPrice = 0;
     this.totalQuantity = 0;
@@ -88,6 +91,8 @@ export class CheckoutComponent implements OnInit {
       console.log('Retrieve credit card years: ' + JSON.stringify(data));
       this.creditCardYears = data;
     });
+
+    this.checkoutTotals();
   }
 
   getFirstName() {
@@ -132,15 +137,17 @@ export class CheckoutComponent implements OnInit {
   }
 
   handleMonthsAndYears() {
-    const creditCardFormGroup = this.checkoutFormGroup.get('creditCard');
+    const creditCardFormGroup: any = this.checkoutFormGroup.get('creditCard');
     const currentYear: number = new Date().getFullYear();
     const selectedYear: number = Number(
-      creditCardFormGroup.value.expirationYear
+      creditCardFormGroup.get('expirationYear').value
     );
-    console.log(selectedYear);
+    // this.checkoutFormGroup.controls.
+    console.log(creditCardFormGroup.get('expirationYear').value);
     // if the current year equals selected year, then start with the current month
 
     let startMonth: number;
+    console.log(currentYear, selectedYear);
     if (currentYear === selectedYear) {
       startMonth = new Date().getMonth() + 1;
     } else {
@@ -150,10 +157,24 @@ export class CheckoutComponent implements OnInit {
     this.formService.getCreditCardMonths(startMonth).subscribe((data) => {
       console.log('Retrieve credit card months: ' + JSON.stringify(data));
       this.creditCardMonths = data;
+      console.log(this.creditCardMonths);
     });
   }
 
-  placeOrder(orderData) {
+  checkoutTotals() {
+    this.cartService.totalQuantity$.subscribe(
+      (res) => (this.totalQuantity = res)
+    );
+    this.cartService.totalPrice$.subscribe((res) => (this.totalPrice = res));
+  }
+
+  placeOrder() {
+    const orderData = {
+      ...this.checkoutFormGroup.value,
+      products: this.cartService.cartItems,
+      totalQuantity: this.totalQuantity,
+      totalPrice: this.totalPrice,
+    };
     this.ordersService.placeOrder(orderData).subscribe((res) => {
       alert('Your order has been placed.');
       this.checkoutFormGroup.reset;
