@@ -1,54 +1,42 @@
-import { OrdersService } from './orders.service';
+import { OrdersService } from './shared/services/orders.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ProfileComponent } from './pages/profile/profile.component';
-import { ProductsComponent } from './pages/products/products.component';
-import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
-import { CheckoutComponent } from './pages/checkout/checkout.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { ProductCardComponent } from './pages/product-card/product-card.component';
-import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { CategoriesComponent } from './pages/categories/categories.component';
-import { ProductDetailsComponent } from './pages/product-details/product-details.component';
-import { FooterComponent } from './pages/footer/footer.component';
-import { CartStatusComponent } from './pages/cart-status/cart-status.component';
-import { CartDetailsComponent } from './pages/cart-details/cart-details.component';
-import { LoginStatusComponent } from './pages/login-status/login-status.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { ProductsComponent } from './components/products/products.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
+import { NavbarComponent } from './shared/navbar/navbar.component';
+import { ProductCardComponent } from './components/product-card/product-card.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { CategoriesComponent } from './components/categories/categories.component';
+import { ProductDetailsComponent } from './components/product-details/product-details.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { CartStatusComponent } from './components/cart-status/cart-status.component';
+import { CartDetailsComponent } from './components/cart-details/cart-details.component';
+import { LoginStatusComponent } from './components/login-status/login-status.component';
 
-import { OktaAuthModule, OKTA_CONFIG } from '@okta/okta-angular';
-
-import { OktaAuth } from '@okta/okta-auth-js';
-
-import myAppConfig from './common/my-app-config';
-import { ProductsService } from './services/products.service';
-import { HomeComponent } from './pages/home/home.component';
+import { ProductsService } from './shared/services/products.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './auth/login/login.component';
-import { UserService } from './user.service';
+import { UserService } from './shared/services/user.service';
 import { RegisterComponent } from './auth/register/register.component';
-import { PaymentComponent } from './pages/payment/payment.component';
-
-const oktaConfig = myAppConfig.oidc;
-
-const oktaAuth = new OktaAuth(oktaConfig);
+import { PaymentComponent } from './components/payment/payment.component';
+import { WishlistComponent } from './components/wishlist/wishlist.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProfileComponent,
     ProductsComponent,
-    ShoppingCartComponent,
     CheckoutComponent,
     NavbarComponent,
     ProductCardComponent,
     NotFoundComponent,
     CategoriesComponent,
     ProductDetailsComponent,
-    HomeComponent,
     FooterComponent,
     CartStatusComponent,
     CartDetailsComponent,
@@ -56,21 +44,16 @@ const oktaAuth = new OktaAuth(oktaConfig);
     LoginComponent,
     RegisterComponent,
     PaymentComponent,
+    WishlistComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    OktaAuthModule,
     ReactiveFormsModule,
     FormsModule,
   ],
-  providers: [
-    ProductsService,
-    UserService,
-    OrdersService,
-    { provide: OKTA_CONFIG, useValue: { oktaAuth } },
-  ],
+  providers: [ProductsService, UserService, OrdersService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
