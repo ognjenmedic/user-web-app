@@ -1,4 +1,4 @@
-import { UserService } from './../../user.service';
+import { UserService } from '../../shared/services/user.service';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import {
@@ -34,9 +34,10 @@ export class RegisterComponent implements OnInit {
       ]),
       password: new FormControl('', [
         Validators.required,
-        Validators.minLength(8),
+        Validators.minLength(3),
       ]),
     });
+    this.registrationForm.valueChanges.subscribe((x) => {});
   }
 
   register() {

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { UserService } from './shared/services/user.service';
 
 // import { PRODUCTS } from 'src/db-data';
 // import { Product } from './common/product';
@@ -9,6 +10,19 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  constructor() {}
-  ngOnInit() {}
+  constructor(private userService: UserService) {}
+  ngOnInit() {
+    const now = new Date();
+    const userState = JSON.parse(window.localStorage.getItem('user'));
+    if (userState) {
+      if (now.getTime() > userState.expiry) {
+        // If the item is expired, delete the item from storage
+        // and return null
+        localStorage.removeItem('user');
+        return null;
+      } else {
+        this.userService.userState.next(userState);
+      }
+    }
+  }
 }

@@ -2,15 +2,17 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
-import { CartDetailsComponent } from './pages/cart-details/cart-details.component';
-import { CategoriesComponent } from './pages/categories/categories.component';
-import { CheckoutComponent } from './pages/checkout/checkout.component';
-import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { PaymentComponent } from './pages/payment/payment.component';
-import { ProductDetailsComponent } from './pages/product-details/product-details.component';
-import { ProductsComponent } from './pages/products/products.component';
+import { CartDetailsComponent } from './components/cart-details/cart-details.component';
+import { CategoriesComponent } from './components/categories/categories.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { PaymentComponent } from './components/payment/payment.component';
+import { ProductDetailsComponent } from './components/product-details/product-details.component';
+import { ProductsComponent } from './components/products/products.component';
+import { WishlistComponent } from './components/wishlist/wishlist.component';
 
 const routes: Routes = [
+  { path: 'wishlist', component: WishlistComponent },
   { path: 'login', component: LoginComponent },
   { path: 'payment', component: PaymentComponent },
   { path: 'register', component: RegisterComponent },

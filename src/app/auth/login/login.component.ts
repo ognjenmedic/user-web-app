@@ -1,4 +1,4 @@
-import { UserService } from './../../user.service';
+import { UserService } from '../../shared/services/user.service';
 import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
@@ -34,6 +34,14 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  setWithExpiry(user, value, ttl) {
+    const now = new Date();
+    const item = {
+      value: value,
+      expiry: now.getTime() + ttl,
+    };
+  }
+
   login() {
     this.userService.login().subscribe(
       (res) => {
@@ -45,6 +53,11 @@ export class LoginComponent implements OnInit {
         });
         if (user) {
           this.loginForm.reset();
+          const now = new Date();
+
+          (user.expiry = now.getTime() + 200000),
+            window.localStorage.setItem('user', JSON.stringify(user));
+          console.log(user);
           this.userService.userState.next(user);
           this.router.navigate(['']);
         } else {

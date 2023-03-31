@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
-import { CartItem } from 'src/app/common/cart-item';
+import { BehaviorSubject, Subject } from 'rxjs';
+import { CartItem } from 'src/app/models/cart-item';
 
 @Injectable({
   providedIn: 'root',
@@ -13,8 +13,8 @@ export class CartService {
 
   constructor() {
     this.cartItems = [];
-    this.totalPrice$ = new Subject();
-    this.totalQuantity$ = new Subject();
+    this.totalPrice$ = new BehaviorSubject<number>(0);
+    this.totalQuantity$ = new BehaviorSubject<number>(0);
   }
 
   addToCart(addedCartItem: CartItem) {
@@ -23,13 +23,6 @@ export class CartService {
     let existingCartItem: CartItem = undefined;
 
     if (this.cartItems.length > 0) {
-      // find the item in the cart based on item id
-      // for (let tempCartItem of this.cartItems) {
-      //   if (tempCartItem.sku === addedCartItem.sku) {
-      //     existingCartItem = tempCartItem;
-      //     break;
-      //   }
-      // }
       existingCartItem = this.cartItems.find(
         (tempCartItem) => tempCartItem.sku === addedCartItem.sku
       );
@@ -80,7 +73,6 @@ export class CartService {
   }
 
   removeCartItem(index: number) {
-    // let removedCartItem = this.cartItems[index]
     return this.cartItems.splice(index, 1);
   }
 }
