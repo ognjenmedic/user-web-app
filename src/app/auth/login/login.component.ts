@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
           this.loginForm.reset();
           const now = new Date();
 
-          (user.expiry = now.getTime() + 200000),
+          (user.expiry = now.getTime() + 900000),
             window.localStorage.setItem('user', JSON.stringify(user));
           console.log(user);
           this.userService.userState.next(user);

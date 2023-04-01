@@ -15,11 +15,16 @@ import { Product } from '../../models/product';
 export class ProductCardComponent implements OnInit {
   @Input()
   product!: Product;
+  showAddedMessage: boolean;
+  showExistingMessage: boolean;
   constructor(
     private cartService: CartService,
     private wishlistService: WishlistService,
     private userService: UserService
-  ) {}
+  ) {
+    this.showAddedMessage = false;
+    this.showExistingMessage = false;
+  }
 
   ngOnInit(): void {}
 
@@ -42,12 +47,18 @@ export class ProductCardComponent implements OnInit {
         (item) => item.sku === addedWishlistItem.sku
       );
       if (existingWishlistItem) {
-        alert('Product already in Wish List!');
+        this.showExistingMessage = true;
+        setTimeout(() => {
+          this.showExistingMessage = false;
+        }, 3000);
       } else {
         this.wishlistService.wishlistItems.push(addedWishlistItem);
 
         this.wishlistService.postWishlistItem(wishlist).subscribe((res) => {
-          alert('Product added to Wish List!');
+          this.showAddedMessage = true;
+          setTimeout(() => {
+            this.showAddedMessage = false;
+          }, 3000);
         });
       }
     }); // existing wishlist

@@ -42,7 +42,6 @@ export class WishlistService {
         .get(`http://localhost:3000/signedUpUsersList/${this.userId}`)
         .pipe(
           map((data: any) => {
-            console.log(data);
             return data.wishlist;
           })
         );
