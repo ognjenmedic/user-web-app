@@ -49,7 +49,7 @@ export class CartDetailsComponent implements OnInit {
     this.cartService.computeCartTotals();
   }
 
-  addItemToWishlist(product: any) {
+  addItemToWishlist(product: any, index: number) {
     let wishlist;
     this.wishlistService.getWishlistItems().subscribe((res) => {
       wishlist = res;
@@ -67,6 +67,7 @@ export class CartDetailsComponent implements OnInit {
 
         this.wishlistService.postWishlistItem(wishlist).subscribe((res) => {
           alert('Product added to Wish List!');
+          this.removeCartItem(index);
         });
       }
     }); // existing wishlist

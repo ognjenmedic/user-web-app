@@ -35,6 +35,24 @@
       >
         Wishlist
       </button>
+      <div
+        *ngIf="showAddedMessage"
+        class="border-black text-green-500 p-2 rounded-lg border-2 shadow-md animate-fade-out"
+      >
+        <p class="flex items-center justify-center">
+          <span class="material-icons mr-2">check_circle</span>
+          Product added to Wish List!
+        </p>
+      </div>
+      <div
+        *ngIf="showExistingMessage"
+        class="border-black text-red-500 p-2 rounded-lg border-2 shadow-md animate-fade-out"
+      >
+        <p class="flex items-center justify-center">
+          <span class="material-icons mr-2">warning</span>
+          Product already in Wish List!
+        </p>
+      </div>
     </div>
   </div>
 </div>
