@@ -14,7 +14,6 @@ import { UserService } from 'src/app/shared/services/user.service';
 export class WishlistComponent implements OnInit {
   product!: Product;
   index: number;
-  message: any;
 
   constructor(
     public wishlistService: WishlistService,
@@ -27,8 +26,6 @@ export class WishlistComponent implements OnInit {
         this.wishlistService.wishlistItems = wishlist;
       } else {
         this.wishlistService.wishlistItems = [];
-        let message =
-          'Your wish list is empty... check out our latest products below!';
       }
     });
     // this.listWishlistItems();
