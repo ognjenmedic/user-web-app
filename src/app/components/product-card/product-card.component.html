@@ -15,44 +15,50 @@
         {{ product.unitPrice | currency : "USD" }}
       </p>
     </div>
-    <div class="flex justify-evenly py-1 px-6 border-t border-gray-300">
-      <!-- <button
-        class="mx-2 my-2 bg-gray-900 hover:bg-gray-700 transition duration-150 ease-in-out rounded border border-gray-800 text-slate-50 px-3 py-2 text-xs"
+    <div class="flex justify-evenly py-1 px-2 border-t border-gray-300">
+      <ng-container
+        *ngIf="!showAddedMessage && !showExistingMessage; else messageTemplate"
       >
-        Buy Now
-      </button> -->
+        <button
+          class="mx-2 my-2 bg-gray-900 hover:bg-gray-700 transition duration-150 ease-in-out rounded border border-gray-800 text-slate-50 px-3 py-2 text-xs"
+        >
+          Buy Now
+        </button>
 
-      <button
-        (click)="addToCart(product)"
-        class="mx-2 my-2 bg-gray-900 hover:bg-gray-700 transition duration-150 ease-in-out rounded border border-gray-800 text-slate-50 px-3 py-2 text-xs"
-      >
-        Add to Cart
-      </button>
+        <button
+          (click)="addToCart(product)"
+          class="mx-2 my-2 bg-gray-900 hover:bg-gray-700 transition duration-150 ease-in-out rounded border border-gray-800 text-slate-50 px-3 py-2 text-xs"
+        >
+          Add to Cart
+        </button>
 
-      <button
-        (click)="addItemToWishlist(product)"
-        class="mx-2 my-2 bg-gray-900 hover:bg-gray-700 transition duration-150 ease-in-out rounded border border-gray-800 text-slate-50 px-3 py-2 text-xs"
-      >
-        Wishlist
-      </button>
-      <div
-        *ngIf="showAddedMessage"
-        class="border-black text-green-500 p-2 rounded-lg border-2 shadow-md animate-fade-out"
-      >
-        <p class="flex items-center justify-center">
-          <span class="material-icons mr-2">check_circle</span>
-          Product added to Wish List!
-        </p>
-      </div>
-      <div
-        *ngIf="showExistingMessage"
-        class="border-black text-red-500 p-2 rounded-lg border-2 shadow-md animate-fade-out"
-      >
-        <p class="flex items-center justify-center">
-          <span class="material-icons mr-2">warning</span>
-          Product already in Wish List!
-        </p>
-      </div>
+        <button
+          (click)="addItemToWishlist(product)"
+          class="mx-2 my-2 bg-gray-900 hover:bg-gray-700 rounded border border-gray-800 text-slate-50 px-3 py-2 text-xs"
+        >
+          Wishlist
+        </button>
+      </ng-container>
+      <ng-template #messageTemplate>
+        <div
+          *ngIf="showAddedMessage"
+          class="border-black text-green-500 p-2 rounded-lg border-2 shadow-md animate-fade-out display: block"
+        >
+          <p class="flex items-center justify-center">
+            <span class="material-icons mr-2">check_circle</span>
+            Product added to Wish List!
+          </p>
+        </div>
+        <div
+          *ngIf="showExistingMessage"
+          class="border-black text-red-500 p-2 rounded-lg border-2 shadow-md animate-fade-out"
+        >
+          <p class="flex items-center justify-center">
+            <span class="material-icons mr-2">warning</span>
+            Product already in Wish List!
+          </p>
+        </div>
+      </ng-template>
     </div>
   </div>
 </div>
