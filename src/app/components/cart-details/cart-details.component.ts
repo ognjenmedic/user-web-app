@@ -17,14 +17,21 @@ export class CartDetailsComponent implements OnInit {
   totalQuantity: number;
   index: number;
   product: Product;
+  showMovedMessage: boolean;
+  showExistingMessage: boolean;
+  showRemovedMessage: boolean;
+
   constructor(
     private cartService: CartService,
-    private wishlistService: WishlistService,
+    public wishlistService: WishlistService,
     private userService: UserService
   ) {
     this.cartItems = [];
     this.totalPrice = 0;
     this.totalQuantity = 0;
+    this.showMovedMessage = false;
+    this.showExistingMessage = false;
+    this.showRemovedMessage = false;
   }
 
   ngOnInit(): void {
@@ -61,12 +68,18 @@ export class CartDetailsComponent implements OnInit {
         (item) => item.sku === addedWishlistItem.sku
       );
       if (existingWishlistItem) {
-        alert('Product already in Wish List!');
+        this.showExistingMessage = true;
+        setTimeout(() => {
+          this.showExistingMessage = false;
+        }, 2000);
       } else {
         this.wishlistService.wishlistItems.push(addedWishlistItem);
 
         this.wishlistService.postWishlistItem(wishlist).subscribe((res) => {
-          alert('Product added to Wish List!');
+          this.showMovedMessage = true;
+          setTimeout(() => {
+            this.showMovedMessage = false;
+          }, 2000);
           this.removeCartItem(index);
         });
       }

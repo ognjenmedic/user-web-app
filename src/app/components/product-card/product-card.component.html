@@ -17,7 +17,10 @@
     </div>
     <div class="flex justify-evenly py-1 px-2 border-t border-gray-300">
       <ng-container
-        *ngIf="!showAddedMessage && !showExistingMessage; else messageTemplate"
+        *ngIf="
+          !showAddedMessage && !showExistingMessage && !showLoginFirstMessage;
+          else messageTemplate
+        "
       >
         <button
           class="mx-2 my-2 bg-gray-900 hover:bg-gray-700 transition duration-150 ease-in-out rounded border border-gray-800 text-slate-50 px-3 py-2 text-xs"
@@ -33,7 +36,11 @@
         </button>
 
         <button
-          (click)="addItemToWishlist(product)"
+          (click)="
+            userService.isAuthenticated
+              ? addItemToWishlist(product)
+              : showLoginFirst()
+          "
           class="mx-2 my-2 bg-gray-900 hover:bg-gray-700 rounded border border-gray-800 text-slate-50 px-3 py-2 text-xs"
         >
           Wishlist
@@ -42,20 +49,32 @@
       <ng-template #messageTemplate>
         <div
           *ngIf="showAddedMessage"
-          class="border-black text-green-500 p-2 rounded-lg border-2 shadow-md animate-fade-out display: block"
+          class="border-black text-green-500 rounded-lg animate-fade-out display: block"
+          style="padding: 13px"
         >
           <p class="flex items-center justify-center">
             <span class="material-icons mr-2">check_circle</span>
-            Product added to Wish List!
+            {{ wishlistService.addedToWishListMessage }}
           </p>
         </div>
         <div
           *ngIf="showExistingMessage"
-          class="border-black text-red-500 p-2 rounded-lg border-2 shadow-md animate-fade-out"
+          class="border-black text-red-500 rounded-lg animate-fade-out"
+          style="padding: 13px"
         >
           <p class="flex items-center justify-center">
             <span class="material-icons mr-2">warning</span>
-            Product already in Wish List!
+            {{ wishlistService.existingWishListMessage }}
+          </p>
+        </div>
+        <div
+          *ngIf="showLoginFirstMessage"
+          class="border-black text-red-500 rounded-lg animate-fade-out"
+          style="padding: 13px"
+        >
+          <p class="flex items-center justify-center">
+            <span class="material-icons mr-2">warning</span>
+            {{ wishlistService.loginFirstMessage }}
           </p>
         </div>
       </ng-template>
