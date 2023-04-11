@@ -11,10 +11,23 @@ import { WishlistResponse } from 'src/app/models/wishlist-response';
 export class WishlistService {
   wishlistItems: Wishlist[];
   userId: number;
+  addedToWishListMessage: string;
+  existingWishListMessage: string;
+  movedToWishListMessage: string;
+  removedMessage: string;
+  emptyWishlistMessage: string;
+  loginFirstMessage: string;
 
   constructor(private http: HttpClient, private userService: UserService) {
     this.wishlistItems = [];
     this.checkUserState();
+    this.addedToWishListMessage = 'Product added to Wish List!';
+    this.existingWishListMessage = 'Product already in Wish List!';
+    this.movedToWishListMessage = 'Product moved to Wish List!';
+    this.removedMessage = 'Product removed from Cart!';
+    this.emptyWishlistMessage =
+      'Your Wish List is empty... Check out our latest products now!';
+    this.loginFirstMessage = 'Please Log In';
   }
 
   checkUserState() {
@@ -49,8 +62,4 @@ export class WishlistService {
       return EMPTY;
     }
   }
-
-  // removeWishlistItem(index: number) {
-  //   return this.wishlistItems.splice(index, 1);
-  // }
 }

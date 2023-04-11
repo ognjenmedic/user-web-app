@@ -17,13 +17,16 @@ export class ProductCardComponent implements OnInit {
   product!: Product;
   showAddedMessage: boolean;
   showExistingMessage: boolean;
+  showLoginFirstMessage: boolean;
+
   constructor(
     private cartService: CartService,
-    private wishlistService: WishlistService,
-    private userService: UserService
+    public wishlistService: WishlistService,
+    public userService: UserService
   ) {
     this.showAddedMessage = false;
     this.showExistingMessage = false;
+    this.showLoginFirstMessage = false;
   }
 
   ngOnInit(): void {}
@@ -35,7 +38,9 @@ export class ProductCardComponent implements OnInit {
     const addedCartItem = new CartItem(product);
     this.cartService.addToCart(addedCartItem);
   }
+
   addItemToWishlist(product: Product) {
+    // if (this.userService.isAuthenticated) {
     let wishlist;
     this.wishlistService.getWishlistItems().subscribe((res) => {
       wishlist = res;
@@ -50,7 +55,7 @@ export class ProductCardComponent implements OnInit {
         this.showExistingMessage = true;
         setTimeout(() => {
           this.showExistingMessage = false;
-        }, 3000);
+        }, 2000);
       } else {
         this.wishlistService.wishlistItems.push(addedWishlistItem);
 
@@ -58,9 +63,23 @@ export class ProductCardComponent implements OnInit {
           this.showAddedMessage = true;
           setTimeout(() => {
             this.showAddedMessage = false;
-          }, 3000);
+          }, 2000);
         });
       }
     }); // existing wishlist
+  }
+  // else {
+  //   this.showLoginFirstMessage = true;
+  //   setTimeout(() => {
+  //     this.showLoginFirstMessage = false;
+  //   }, 2000);
+  // }
+
+  showLoginFirst(): void {
+    this.showLoginFirstMessage = true;
+    console.log(this.showLoginFirstMessage);
+    setTimeout(() => {
+      this.showLoginFirstMessage = false;
+    }, 2000);
   }
 }

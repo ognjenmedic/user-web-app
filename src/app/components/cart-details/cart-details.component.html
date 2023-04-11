@@ -4,10 +4,42 @@
       <h1 class="text-3xl lg:text-4xl font-semibold text-gray-800">
         My Shopping Cart
       </h1>
+
       <p class="text-base text-gray-600 mt-4 mb-1"></p>
     </div>
     <hr />
-
+    <ng-container *ngTemplateOutlet="messageTemplate"></ng-container>
+    <ng-template #messageTemplate>
+      <div class="flex items-center justify-center">
+        <div
+          *ngIf="showMovedMessage"
+          class="border-black text-gray-500 p-2 rounded-lg border-2 shadow-md animate-fade-out w-full xl:w-1/4 my-4"
+        >
+          <p class="flex items-center justify-center">
+            <span class="material-icons mr-2">check_circle</span>
+            {{ wishlistService.movedToWishListMessage }}
+          </p>
+        </div>
+        <div
+          *ngIf="showExistingMessage"
+          class="border-black text-red-500 p-2 rounded-lg border-2 shadow-md animate-fade-out w-full xl:w-1/4 my-4"
+        >
+          <p class="flex items-center justify-center">
+            <span class="material-icons mr-2">warning</span>
+            {{ wishlistService.existingWishListMessage }}
+          </p>
+        </div>
+        <div
+          *ngIf="showRemovedMessage"
+          class="border-black text-red-500 p-2 rounded-lg border-2 shadow-md animate-fade-out w-full xl:w-1/4 my-4"
+        >
+          <p class="flex items-center justify-center">
+            <span class="material-icons mr-2">warning</span>
+            {{ wishlistService.removedMessage }}
+          </p>
+        </div>
+      </div>
+    </ng-template>
     <div
       *ngFor="let tempCartItem of cartItems; let i = index"
       class="flex flex-col md:flex-row items-strech mt-10 mb-5 md:mt-14 lg:mt-16"
@@ -51,6 +83,7 @@
             >
           </div>
         </div>
+
         <div>
           <div class="flex md:flex-col h-full lg:flex-row lg:space-x-72">
             <div
